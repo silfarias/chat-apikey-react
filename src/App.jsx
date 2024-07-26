@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { environments } from './config/environments.js';
 import { guardarMensajes } from './utils/messages.js';
 import { BsRobot } from "react-icons/bs";
 import axios from 'axios';
 import './css/index.css';
+
+
+const apiKey = import.meta.env.VITE_API_KEY;
 
 function App() {
 
@@ -45,7 +47,7 @@ function App() {
     try {
 
       const response = await axios({
-        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${environments.API_KEY}`,
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
         method: 'post',
         data: {
           "contents": [
